@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hermes Techs</title>
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <link rel="stylesheet" href="dist/app.css">
+</head>
+
+<body ng-app="dataApp" ng-controller="dataCtrl">
+    <header>
+        <h1>Hermes Techs video</h1>
+    </header>
+    <main>
+        <div class="content">
+            <section>
+                <div class="albums">
+                    <div ng-repeat="album in Data" class="albums__item-wrap" ng-click="showList(album)">
+                        <img ng-src="{{album.img}}" alt="album" class="albums__item" id="{{album.id}}">
+                    </div>
+                </div>
+            </section>
+            <aside>
+                <div class="list">
+                    <button class="list__button" id="addButton">Add info</button>
+                    <div id="{{currentList.id}}">
+                        <h3>{{currentList.title}}</h3>
+                        <p>{{currentList.description}}</p>
+                        <div ng-repeat="list in currentList.links" class="list__item">
+                            <div class="list__link-wrap">
+                                <a href="{{list.link}}" target="_blank">
+                                    <img ng-src="{{list.img_link}}" alt="list-link" class="list__link">
+                                </a>
+                            </div>
+                            <div class="list__text">
+                                <div>
+                                    <h5>{{list.titleVideo}}</h5>
+                                    <p>{{list.descriptionVideo}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list__popup" id="popup">
+                        <div class="overlay_popup" id="overlay"></div>
+                        <div class="list__add">
+                            <p class="list__add-close" id="popup__close">&#9932;</p>
+                            <h3>You can add your favorite video</h3>
+                            <div class="add-items">
+                                <div class="add-items_wrap">
+                                    <input type="text" placeholder="Video's link" ng-model="linkVideo" id="video">
+                                    <p>Please add link of the video from youtube</p>
+                                </div>
+                                <div class="add-items_wrap">
+                                    <input type="text" placeholder="Picture's link" ng-model="linkPicture" id="picture">
+                                    <p>Please add picture's link for the video</p>
+                                </div>
+                                <div class="add-items_wrap">
+                                    <input type="text" placeholder="Video's title" ng-model="titleVideo" id="title">
+                                    <p>Please add title of the video</p>
+                                </div>
+                                <div class="add-items_wrap">
+                                    <input type="text" placeholder="Video's description" ng-model="descriptionVideo" id="description">
+                                    <p>Please add description of the video</p>
+                                </div>
+                                <button ng-click="addItem(album)" id="save">save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="dist/app.js"></script>
+</body>
+
+</html>
